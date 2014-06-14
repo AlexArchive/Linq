@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace EmuLinq
 {
-    public static class Enumerable
+    public static partial class Enumerable
     {
         public static IEnumerable<TSource> Where<TSource>(this IEnumerable<TSource> source,
             Func<TSource, bool> predicate)
@@ -14,10 +14,10 @@ namespace EmuLinq
             if (predicate == null)
                 throw new ArgumentNullException("source");
 
-            return WhereIterator(source, predicate);
+            return WhereImpl(source, predicate);
         }
 
-        private static IEnumerable<TSource> WhereIterator<TSource>(this IEnumerable<TSource> source, 
+        private static IEnumerable<TSource> WhereImpl<TSource>(this IEnumerable<TSource> source, 
             Func<TSource, bool> predicate)
         {
             foreach (TSource element in source)
@@ -38,10 +38,10 @@ namespace EmuLinq
             if (predicate == null)
                 throw new ArgumentNullException("source");
 
-            return WhereIterator(source, predicate);
+            return WhereImpl(source, predicate);
         }
 
-        private static IEnumerable<TSource> WhereIterator<TSource>(this IEnumerable<TSource> source,
+        private static IEnumerable<TSource> WhereImpl<TSource>(this IEnumerable<TSource> source,
             Func<TSource, int, bool> predicate)
         {
             int index = -1;
