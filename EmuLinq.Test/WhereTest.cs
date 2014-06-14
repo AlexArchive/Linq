@@ -53,7 +53,7 @@ namespace EmuLinq.Test
             var result = source.Where(x => x == 1);
 
             // assert
-            CollectionAssert.AreEquivalent(source, result);
+            CollectionAssert.IsEmpty(result);
         }
 
         [Test]
@@ -102,7 +102,7 @@ namespace EmuLinq.Test
             var result = source.Where((x, i) => x == 1);
 
             // assert
-            CollectionAssert.AreEquivalent(source, result);
+            CollectionAssert.IsEmpty(result);
         }
     }
 }

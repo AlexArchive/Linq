@@ -66,7 +66,7 @@ namespace EmuLinq.Test
             var result = source.Select(x => x);
             // assert
 
-            CollectionAssert.AreEquivalent(result, source);
+            CollectionAssert.IsEmpty(result);
         }
 
         [Test]
@@ -126,9 +126,9 @@ namespace EmuLinq.Test
 
             // act
             var result = source.Select((x, i) => x * i);
-            // assert
 
-            CollectionAssert.AreEquivalent(result, source);
+            // assert
+            CollectionAssert.IsEmpty(result);
         }
     }
 }
