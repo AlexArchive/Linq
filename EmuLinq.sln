@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.30501.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EmuLinq", "EmuLinq\EmuLinq.csproj", "{4D985C01-CC81-4BD6-88CB-5FF17B703367}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EmuLinq.Test", "EmuLinq.Test\EmuLinq.Test.csproj", "{852D4E6B-1F00-4250-AAAB-7CC0E6AC7CFB}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{4D985C01-CC81-4BD6-88CB-5FF17B703367}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4D985C01-CC81-4BD6-88CB-5FF17B703367}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4D985C01-CC81-4BD6-88CB-5FF17B703367}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4D985C01-CC81-4BD6-88CB-5FF17B703367}.Release|Any CPU.Build.0 = Release|Any CPU
+		{852D4E6B-1F00-4250-AAAB-7CC0E6AC7CFB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{852D4E6B-1F00-4250-AAAB-7CC0E6AC7CFB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{852D4E6B-1F00-4250-AAAB-7CC0E6AC7CFB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{852D4E6B-1F00-4250-AAAB-7CC0E6AC7CFB}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
