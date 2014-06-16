@@ -13,10 +13,7 @@ namespace EmuLinq
             var count = 0;
             foreach (var element in source)
             {
-                count++;
-                // test this..
-                if (count == Int32.MaxValue)
-                    throw new OverflowException();
+                checked { count++; }
             }
             return count;
         }

@@ -89,5 +89,25 @@ namespace EmuLinq.Test
             // assert
             Assert.Throws<ArgumentNullException>(() => source.Count(null));
         }
+
+        [Test]
+        [Ignore("too slow")]
+        public void CountThatExeedsIntMaxThrowsOverflowException()
+        {
+            var source = Enumerable.Range(0, Int32.MaxValue)
+                .Concat(Enumerable.Range(0, 1));
+
+            Assert.Throws<OverflowException>(()=> source.Count());
+        }
+
+        [Test]
+        [Ignore("too slow")]
+        public void PredicatedCountThatExeedsIntMaxThrowsOverflowException()
+        {
+            var source = Enumerable.Range(0, Int32.MaxValue)
+                .Concat(Enumerable.Range(0, 1));
+
+            Assert.Throws<OverflowException>(() => source.Count(x => true));
+        }
     }
 }
