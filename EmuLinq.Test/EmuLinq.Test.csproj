@@ -39,6 +39,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ConcatTest.cs" />
     <Compile Include="CountTest.cs" />
     <Compile Include="EmptyTest.cs" />
     <Compile Include="LongCountTest.cs" />
