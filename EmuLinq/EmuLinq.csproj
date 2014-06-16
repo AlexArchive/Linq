@@ -49,6 +49,7 @@
     <Compile Include="Range.cs" />
     <Compile Include="Repeat.cs" />
     <Compile Include="Select.cs" />
+    <Compile Include="SelectMany.cs" />
     <Compile Include="Where.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
