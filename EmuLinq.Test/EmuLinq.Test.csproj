@@ -41,6 +41,7 @@
   <ItemGroup>
     <Compile Include="CountTest.cs" />
     <Compile Include="EmptyTest.cs" />
+    <Compile Include="LongCountTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RangeTest.cs" />
     <Compile Include="RepeatTest.cs" />

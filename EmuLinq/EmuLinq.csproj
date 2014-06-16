@@ -42,6 +42,7 @@
   <ItemGroup>
     <Compile Include="Count.cs" />
     <Compile Include="Empty.cs" />
+    <Compile Include="LongCount.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Compatibility.cs" />
     <Compile Include="Range.cs" />
