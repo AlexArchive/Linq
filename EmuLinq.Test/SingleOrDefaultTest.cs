@@ -32,7 +32,7 @@ namespace EmuLinq.Test
         public void MultipleElementSequenceWithoutPredicate()
         {
             var source = new[] { 1, 2, 3 };
-            Assert.That(source.SingleOrDefault(), Is.EqualTo(0));
+            Assert.Throws<InvalidOperationException>(() => source.SingleOrDefault());
         }
 
         [Test]
@@ -67,14 +67,16 @@ namespace EmuLinq.Test
         public void MultipleElementSequenceWithSinglePredicateMatch()
         {
             var source = new[] { 1, 2, 3 };
-            Assert.That(source.SingleOrDefault(x => x==1), Is.EqualTo(0));
+            Assert.Throws<InvalidOperationException>(() => source.SingleOrDefault(x=>x==1));
+
         }
 
         [Test]
         public void MultipleElementSequenceWithMultiplePredicateMatches()
         {
             var source = new[] { 1, 2, 3, 1 };
-            Assert.That(source.SingleOrDefault(x => x == 1), Is.EqualTo(0));
+            Assert.Throws<InvalidOperationException>(() => source.SingleOrDefault(x=>x==1));
+
         }
 
         [Test]

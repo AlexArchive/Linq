@@ -22,7 +22,7 @@ namespace EmuLinq
 
             if (enumerator.MoveNext())
             {
-                return default(TSource);
+                throw new InvalidOperationException();
             }
 
             return single;
@@ -51,8 +51,7 @@ namespace EmuLinq
 
             if (enumerator.MoveNext())
             {
-                return default(TSource);
-
+                throw new InvalidOperationException();
             }
 
             return single;
