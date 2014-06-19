@@ -53,6 +53,7 @@
     <Compile Include="RepeatTest.cs" />
     <Compile Include="SelectManyTest.cs" />
     <Compile Include="SelectTest.cs" />
+    <Compile Include="SingleTest.cs" />
     <Compile Include="WhereTest.cs" />
   </ItemGroup>
   <ItemGroup>
