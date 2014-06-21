@@ -39,9 +39,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AggregateTest.cs" />
     <Compile Include="AnyTest.cs" />
     <Compile Include="ConcatTest.cs" />
     <Compile Include="CountTest.cs" />
+    <Compile Include="DefaultIfEmptyTest.cs" />
     <Compile Include="EmptyTest.cs" />
     <Compile Include="FirstOrDefaultTest.cs" />
     <Compile Include="FirstTest.cs" />
