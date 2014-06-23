@@ -44,6 +44,7 @@
     <Compile Include="ConcatTest.cs" />
     <Compile Include="CountTest.cs" />
     <Compile Include="DefaultIfEmptyTest.cs" />
+    <Compile Include="DistinctTest.cs" />
     <Compile Include="EmptyTest.cs" />
     <Compile Include="FirstOrDefaultTest.cs" />
     <Compile Include="FirstTest.cs" />
