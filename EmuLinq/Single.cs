@@ -10,21 +10,22 @@ namespace EmuLinq
             if (source == null)
                 throw new ArgumentNullException("source");
 
-            var enumerator = source.GetEnumerator();
-
-            if (!enumerator.MoveNext())
+            using (var enumerator = source.GetEnumerator())
             {
-                throw new InvalidOperationException();
+                if (!enumerator.MoveNext())
+                {
+                    throw new InvalidOperationException();
+                }
+
+                var single = enumerator.Current;
+
+                if (enumerator.MoveNext())
+                {
+                    throw new InvalidOperationException();
+                }
+
+                return single;
             }
-
-            var single = enumerator.Current;
-
-            if (enumerator.MoveNext())
-            {
-                throw new InvalidOperationException();
-            }
-
-            return single;
         }
 
         public static TSource Single<TSource>(this IEnumerable<TSource> source, Func<TSource, bool> predicate)
@@ -35,23 +36,24 @@ namespace EmuLinq
             if (predicate == null)
                 throw new ArgumentNullException("predicate");
 
-            var enumerator = source.GetEnumerator();
-
-            if (!enumerator.MoveNext())
+            using (var enumerator = source.GetEnumerator())
             {
-                throw new InvalidOperationException();
+                if (!enumerator.MoveNext())
+                {
+                    throw new InvalidOperationException();
+                }
+
+                var single = enumerator.Current;
+
+                if (!predicate(single)) throw new InvalidOperationException();
+
+                if (enumerator.MoveNext())
+                {
+                    throw new InvalidOperationException();
+                }
+
+                return single;
             }
-
-            var single = enumerator.Current;
-
-            if (!predicate(single)) throw new InvalidOperationException();
-
-            if (enumerator.MoveNext())
-            {
-                throw new InvalidOperationException();
-            }
-
-            return single;
         }
 
 

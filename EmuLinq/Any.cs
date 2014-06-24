@@ -10,7 +10,10 @@ namespace EmuLinq
             if (source == null)
                 throw new ArgumentNullException("source");
 
-            return source.GetEnumerator().MoveNext();
+            using (var enumerator = source.GetEnumerator())
+            {
+                return enumerator.MoveNext();
+            }
         }
 
         public static bool Any<TSource>(this IEnumerable<TSource> source, Func<TSource, bool> predicate)

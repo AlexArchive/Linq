@@ -11,10 +11,12 @@ namespace EmuLinq
             if (source==null)
                 throw new ArgumentNullException("source");
 
-            var enumerator = source.GetEnumerator();
-            if (enumerator.MoveNext())
+            using (var enumerator = source.GetEnumerator())
             {
-                return source;
+                if (enumerator.MoveNext())
+                {
+                    return source;
+                }
             }
 
             return new[] { default( TSource ) };
@@ -26,10 +28,12 @@ namespace EmuLinq
                 throw new ArgumentNullException("source");
 
 
-            var enumerator = source.GetEnumerator();
-            if (enumerator.MoveNext())
+            using (var enumerator = source.GetEnumerator())
             {
-                return source;
+                if (enumerator.MoveNext())
+                {
+                    return source;
+                }
             }
 
             return new[] { defaultValue };
