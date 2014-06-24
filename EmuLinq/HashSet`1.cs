@@ -12,6 +12,14 @@ namespace EmuLinq
             _dictionary = new Dictionary<T, object>(comparer);
         }
 
+        internal HashSet(IEnumerable<T> collection, IEqualityComparer<T> comparer)
+        {
+            _dictionary = new Dictionary<T, object>(comparer);
+            foreach (var element in collection) {
+                Add(element);
+            }
+        }  
+
         internal bool Add(T item)
         {
             if (_dictionary.ContainsKey(item)) return false;

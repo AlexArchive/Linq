@@ -41,6 +41,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Aggregate.cs" />
+    <Compile Include="All.cs" />
     <Compile Include="Any.cs" />
     <Compile Include="Concat.cs" />
     <Compile Include="Count.cs" />
@@ -51,6 +52,7 @@
     <Compile Include="First.cs" />
     <Compile Include="FirstOrDefault.cs" />
     <Compile Include="HashSet`1.cs" />
+    <Compile Include="Intersect.cs" />
     <Compile Include="Last.cs" />
     <Compile Include="LastOrDefault.cs" />
     <Compile Include="LongCount.cs" />
@@ -62,6 +64,7 @@
     <Compile Include="SelectMany.cs" />
     <Compile Include="Single.cs" />
     <Compile Include="SingleOrDefault.cs" />
+    <Compile Include="Union.cs" />
     <Compile Include="Where.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
