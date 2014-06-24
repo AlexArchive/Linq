@@ -47,6 +47,7 @@
     <Compile Include="DefaultIfEmptyTest.cs" />
     <Compile Include="DistinctTest.cs" />
     <Compile Include="EmptyTest.cs" />
+    <Compile Include="ExceptTest.cs" />
     <Compile Include="FirstOrDefaultTest.cs" />
     <Compile Include="FirstTest.cs" />
     <Compile Include="IntersectTest.cs" />
