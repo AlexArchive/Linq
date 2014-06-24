@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 
 namespace EmuLinq
 {
@@ -8,19 +7,18 @@ namespace EmuLinq
     {
         public static IEnumerable<int> Range(int start, int count)
         {
-            // why do I need to + 1 here?
             long maximum = ((long) start) + count - 1;
-
             if (count < 0 || maximum > Int32.MaxValue)
                 throw new ArgumentOutOfRangeException("count");
 
-            return RangeImpl(start, count);
+            return RangeIterator(start, count);
         }
 
-        private static IEnumerable<int> RangeImpl(int start, int count)
+        private static IEnumerable<int> RangeIterator(int start, int count)
         {
-            for (int i = 0; i < count; i++)
+            for (int i = 0; i < count; i++) {
                 yield return start + i;
+            }
         }
     }
 }

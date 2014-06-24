@@ -10,13 +10,12 @@ namespace EmuLinq
             if (count < 0)
                 throw new ArgumentOutOfRangeException("count");
 
-            return RepeatImpl(element, count);
+            return RepeatIterator(element, count);
         }
 
-        private static IEnumerable<TResult> RepeatImpl<TResult>(TResult element, int count)
+        private static IEnumerable<TResult> RepeatIterator<TResult>(TResult element, int count)
         {
-            for (int i = 0; i < count; i++)
-            {
+            for (int i = 0; i < count; i++) {
                 yield return element;
             }
         }

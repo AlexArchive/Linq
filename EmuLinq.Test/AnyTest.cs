@@ -55,11 +55,11 @@ namespace EmuLinq.Test
         public void NonEmptySourceWithMatchingPredicateReturnsTrue()
         {
             // arrange
-            var source = new[] { 1 };
+            var source = new[] { 1, 2};
 
             // act
             // assert
-            Assert.That(source.Any(x => x == 1), Is.True);
+            Assert.That(source.Any(x => x == 2), Is.True);
         }
         [Test]
         public void NonEmptySourceWithNonMatchingPredicateReturnsFalse()
@@ -93,5 +93,6 @@ namespace EmuLinq.Test
             // assert
             Assert.Throws<ArgumentNullException>(() => source.Any(null));
         }
+
     }
 }

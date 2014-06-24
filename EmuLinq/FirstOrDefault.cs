@@ -1,39 +1,32 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 
 namespace EmuLinq
 {
     public static partial class Enumerable
     {
-        public static TSource FirstOrDefault<TSource>(this IEnumerable<TSource> source)
+        public static TSource FirstOrDefault<TSource>(
+            this IEnumerable<TSource> source)
         {
-            if (source == null)
-                throw new ArgumentNullException("source");
+            Ensure.IsNotNull(source, "source");
 
-            foreach (var element in source)
-            {
+            foreach (var element in source) {
                 return element;
             }
-
             return default(TSource);
         }
 
-        public static TSource FirstOrDefault<TSource>(this IEnumerable<TSource> source, Func<TSource, bool> predicate)
+        public static TSource FirstOrDefault<TSource>(
+            this IEnumerable<TSource> source,
+            Func<TSource, bool> predicate)
         {
-            if (source == null)
-                throw new ArgumentNullException("source");
+            Ensure.IsNotNull(source, "source");
+            Ensure.IsNotNull(predicate, "predicate");
 
-            if (predicate == null)
-                throw new ArgumentNullException("predicate");
-
-            foreach (var element in source)
-            {
-                if (predicate(element))
-                {
+            foreach (var element in source) {
+                if (predicate(element)) {
                     return element;
                 }
             }
-
             return default(TSource);
         }
     }

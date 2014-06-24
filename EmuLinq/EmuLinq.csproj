@@ -47,6 +47,7 @@
     <Compile Include="DefaultIfEmpty.cs" />
     <Compile Include="Distinct.cs" />
     <Compile Include="Empty.cs" />
+    <Compile Include="Ensure.cs" />
     <Compile Include="First.cs" />
     <Compile Include="FirstOrDefault.cs" />
     <Compile Include="HashSet`1.cs" />

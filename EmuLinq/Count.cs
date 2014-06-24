@@ -1,35 +1,37 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 
 namespace EmuLinq
 {
     public static partial  class Enumerable
     {
-        public static int Count<TSource>(this IEnumerable<TSource> source)
+        public static int Count<TSource>(
+            this IEnumerable<TSource> source)
         {
-            if (source == null)
-                throw new ArgumentNullException("source");
+            Ensure.IsNotNull(source, "source");
 
-            var count = 0;
-            foreach (var element in source)
-            {
+            int count = 0;
+            foreach (var element in source) {
                 checked { count++; }
             }
             return count;
         }
 
-        public static int Count<TSource>(this IEnumerable<TSource> source, Func<TSource, bool> predicate)
+        public static int Count<TSource>(
+            this IEnumerable<TSource> source, 
+            Func<TSource, bool> predicate)
         {
-            if (source == null)
-                throw new ArgumentNullException("source");
+            Ensure.IsNotNull(source, "source");
+            Ensure.IsNotNull(predicate, "predicate");
 
-            if (predicate == null)
-                throw new ArgumentNullException("predicate");
-
-            var filteredSource = source.Where(predicate);
-            return filteredSource.Count();
+            int count = 0;
+            foreach (var element in source) {
+                if (predicate(element)) {
+                    checked { count++; }
+                }                
+            }
+            return count;
         }
 
-        // use ICollection.Count when applicable for better performance.
+        // TODO: Use ICollection.Count when applicable for better performance.
     }
 }

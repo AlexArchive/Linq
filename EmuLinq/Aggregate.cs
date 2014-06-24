@@ -5,56 +5,46 @@ namespace EmuLinq
 {
     public static partial class Enumerable
     {
-        public static TSource Aggregate<TSource>(this IEnumerable<TSource> source, 
+        public static TSource Aggregate<TSource>(
+            this IEnumerable<TSource> source,
             Func<TSource, TSource, TSource> func)
         {
-            if (source == null) throw new ArgumentNullException("source");
-            if (func == null) throw new ArgumentNullException("func");
+            Ensure.IsNotNull(source, "source");
+            Ensure.IsNotNull(func, "func");
 
-            using (var enumerator = source.GetEnumerator())
-            {
-                if (!enumerator.MoveNext()) throw new InvalidOperationException();
-
+            using (var enumerator = source.GetEnumerator()) {
+                if (!enumerator.MoveNext()) {
+                    throw new InvalidOperationException("Sequence contains no elements");
+                }
                 TSource result = enumerator.Current;
-
-                while (enumerator.MoveNext())
-                {
+                while (enumerator.MoveNext()) {
                     result = func(result, enumerator.Current);
                 }
-
                 return result;
             }
         }
 
-        public static TAccumulate Aggregate<TSource, TAccumulate>(this IEnumerable<TSource> source,
-            TAccumulate seed, Func<TAccumulate, TSource, TAccumulate> func)
+        public static TAccumulate Aggregate<TSource, TAccumulate>(
+            this IEnumerable<TSource> source,
+            TAccumulate seed,
+            Func<TAccumulate, TSource, TAccumulate> func)
         {
-            if (source == null) throw new ArgumentNullException("source");
-            if (func == null) throw new ArgumentNullException("func");
-
-            foreach (var element in source)
-            {
-                seed = func(seed, element);
-            }
-
-            return seed;
+            return Aggregate(source, seed, func, x => x);
         }
 
         public static TResult Aggregate<TSource, TAccumulate, TResult>(
             this IEnumerable<TSource> source,
-            TAccumulate seed, 
+            TAccumulate seed,
             Func<TAccumulate, TSource, TAccumulate> func,
             Func<TAccumulate, TResult> resultSelector)
         {
-            if (source == null) throw new ArgumentNullException("source");
-            if (func == null) throw new ArgumentNullException("func");
-            if (resultSelector == null) throw new ArgumentNullException("resultSelector");
+            Ensure.IsNotNull(source, "source");
+            Ensure.IsNotNull(func, "func");
+            Ensure.IsNotNull(resultSelector, "resultSelector");
 
-            foreach (var element in source)
-            {
+            foreach (var element in source) {
                 seed = func(seed, element);
             }
-
             return resultSelector(seed);
         }
     }

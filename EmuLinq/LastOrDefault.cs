@@ -1,59 +1,37 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 
 namespace EmuLinq
 {
     public static partial class Enumerable
     {
-        public static TSource LastOrDefault<TSource>(this IEnumerable<TSource> source)
+        public static TSource LastOrDefault<TSource>(
+            this IEnumerable<TSource> source)
         {
-            if (source == null)
-                throw new ArgumentNullException("source");
+            Ensure.IsNotNull(source, "source");
 
-            using (var enumerator = source.GetEnumerator())
-            {
-                if (enumerator.MoveNext() == false)
-                {
-                    return default(TSource);
-                }
-
-                TSource current = enumerator.Current;
-                while (enumerator.MoveNext())
-                {
-                    current = enumerator.Current;
-                }
-                return current;
+            TSource last = default(TSource);
+            foreach (TSource item in source) {
+                last = item;
             }
+            return last;
         }
 
-        public static TSource LastOrDefault<TSource>(this IEnumerable<TSource> source, Func<TSource, bool> predicate)
+        public static TSource LastOrDefault<TSource>(
+            this IEnumerable<TSource> source, 
+            Func<TSource, bool> predicate)
         {
-            if (source == null)
-                throw new ArgumentNullException("source");
+            Ensure.IsNotNull(source, "source");
+            Ensure.IsNotNull(predicate, "predicate");
 
-            if (predicate == null)
-                throw new ArgumentNullException("predicate");
-
-            using (var enumerator = source.GetEnumerator())
-            {
-                TSource current = default(TSource);
-                bool gotMatch = false;
-                while (enumerator.MoveNext())
-                {
-                    if (predicate(enumerator.Current))
-                    {
-                        current = enumerator.Current;
-                        gotMatch = true;
-                    }
-                }
-
-                if (gotMatch)
-                {
-                    return current;
+            TSource current = default(TSource);
+            foreach (var element in source) {
+                if (predicate(element)) {
+                    current = element;
                 }
             }
-
-            return default(TSource);
+            return current;
         }
+
+        // TODO: Use IList<T>[index] when applicable.
     }
 }

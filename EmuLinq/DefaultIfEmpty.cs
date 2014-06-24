@@ -1,43 +1,27 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 
 namespace EmuLinq
 {
     public static partial class Enumerable
     {
-        public static IEnumerable<TSource> DefaultIfEmpty<TSource>(this IEnumerable<TSource> source)
+        public static IEnumerable<TSource> DefaultIfEmpty<TSource>(
+            this IEnumerable<TSource> source)
         {
-            if (source==null)
-                throw new ArgumentNullException("source");
-
-            using (var enumerator = source.GetEnumerator())
-            {
-                if (enumerator.MoveNext())
-                {
-                    return source;
-                }
-            }
-
-            return new[] { default( TSource ) };
+            return DefaultIfEmpty(source, default(TSource));
         }
 
-        public static IEnumerable<TSource> DefaultIfEmpty<TSource>(this IEnumerable<TSource> source, TSource defaultValue)
+        public static IEnumerable<TSource> DefaultIfEmpty<TSource>(
+            this IEnumerable<TSource> source, 
+            TSource defaultValue)
         {
-            if (source == null)
-                throw new ArgumentNullException("source");
+            Ensure.IsNotNull(source, "source");
 
-
-            using (var enumerator = source.GetEnumerator())
-            {
-                if (enumerator.MoveNext())
-                {
+            using (var enumerator = source.GetEnumerator()) {
+                if (enumerator.MoveNext()) {
                     return source;
                 }
             }
-
             return new[] { defaultValue };
         }
-
     }
 }

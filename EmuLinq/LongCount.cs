@@ -1,34 +1,35 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 
 namespace EmuLinq
 {
     public static partial class Enumerable
     {
-        public static long LongCount<TSource>(this IEnumerable<TSource> source)
+        public static long LongCount<TSource>(
+            this IEnumerable<TSource> source)
         {
-            if (source ==null)
-                throw new ArgumentNullException();
+            Ensure.IsNotNull(source, "source");
 
             long count = 0;
-            foreach (var element in source)
-            {
-                count++;
+            foreach (var element in source) {
+                checked { count++; }
             }
             return count;
         }
 
-        public static long LongCount<TSource>(this IEnumerable<TSource> source, 
+        public static long LongCount<TSource>(
+            this IEnumerable<TSource> source, 
             Func<TSource, bool> predicate)
         {
-            if (source == null)
-                throw new ArgumentNullException();
+            Ensure.IsNotNull(source, "source");
+            Ensure.IsNotNull(predicate, "predicate");
 
-            if (predicate == null)
-                throw new ArgumentNullException();
-
-            var filteredSource = source.Where(predicate);
-            return filteredSource.LongCount();
+            long count = 0;
+            foreach (var element in source) {
+                if (predicate(element)) {
+                    checked { count++; }
+                }
+            }
+            return count;
         }
     }
 }
