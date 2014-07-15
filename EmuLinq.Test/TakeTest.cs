@@ -22,6 +22,14 @@ namespace EmuLinq.Test
         }
 
         [Test]
+        public void Zero_ReturnsEmptySequence()
+        {
+            var sequence = Enumerable.Range(0, 100);
+            var actual = sequence.Take(0);
+            CollectionAssert.IsEmpty(actual);
+        }
+
+        [Test]
         public void NegativeCount_ReturnsEmptySequence()
         {
             var sequence = Enumerable.Range(0, 100);

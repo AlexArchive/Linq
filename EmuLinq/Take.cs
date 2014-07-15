@@ -16,12 +16,13 @@ namespace EmuLinq
             IEnumerable<TSource> source, 
             int count)
         {
+            if (count <= 0) yield break;
             int elementsStreamed = 0;
             using (var enumerator = source.GetEnumerator()) {
                 while (enumerator.MoveNext()) {
                     elementsStreamed += 1;
                     yield return enumerator.Current;
-                    if (elementsStreamed == count) yield break;
+                    if (elementsStreamed >= count) yield break;
                 }
             }
         }
