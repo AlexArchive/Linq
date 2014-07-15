@@ -1,4 +1,5 @@
-﻿using NUnit.Framework;
+﻿using EmuLinq.Test.Support;
+using NUnit.Framework;
 using System;
 using System.Collections.Generic;
 
@@ -7,6 +8,12 @@ namespace EmuLinq.Test
     [TestFixture]
     public class DistinctTest
     {
+        [Test]
+        public void ExecutionIsDeferred()
+        {
+            new ThrowingEnumerable().Distinct();
+        }
+
         [Test]
         public void NullSourceNoComparer()
         {

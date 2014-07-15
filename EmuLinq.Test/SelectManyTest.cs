@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using EmuLinq.Test.Support;
 using NUnit.Framework;
 
 namespace EmuLinq.Test
@@ -8,10 +9,16 @@ namespace EmuLinq.Test
     public class SelectManyTest
     {
         [Test]
+        public void ExecutionIsDeferred()
+        {
+            new ThrowingEnumerable().SelectMany(x => new int[1]);
+        }
+
+        [Test]
         public void SimpleFlatten()
         {
             // arrange
-            var source = new [] { "Mexico Brazil", "Australia Netherlands" };
+            var source = new[] { "Mexico Brazil", "Australia Netherlands" };
 
             // act
             var result = source.SelectMany(group => group.Split(' '));
@@ -105,7 +112,7 @@ namespace EmuLinq.Test
             // act
             // assert
             Assert.Throws<ArgumentNullException>(() =>
-                source.SelectMany((Func<string, IEnumerable<char>>) null));
+                source.SelectMany((Func<string, IEnumerable<char>>)null));
         }
 
         [Test]
@@ -128,7 +135,7 @@ namespace EmuLinq.Test
             // act
             // assert
             Assert.Throws<ArgumentNullException>(() =>
-                source.SelectMany((Func<string, int, IEnumerable<char>>) null));
+                source.SelectMany((Func<string, int, IEnumerable<char>>)null));
         }
 
         [Test]
@@ -136,7 +143,7 @@ namespace EmuLinq.Test
         {
             // arrange
             IEnumerable<string> source = null;
-            
+
             // act
             // assert
             Assert.Throws<ArgumentNullException>(() => source.SelectMany(s => s, (s, c) => c));
@@ -151,7 +158,7 @@ namespace EmuLinq.Test
             // act
             // assert
             Assert.Throws<ArgumentNullException>(() =>
-                source.SelectMany((Func<string, IEnumerable<char>>) null, (s, c) => c));
+                source.SelectMany((Func<string, IEnumerable<char>>)null, (s, c) => c));
         }
 
         [Test]

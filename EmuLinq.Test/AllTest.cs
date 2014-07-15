@@ -7,7 +7,6 @@ namespace EmuLinq.Test
     [TestFixture]
     public class AllTest
     {
-
         [Test]
         public void PredicateMachingAllElementsReturnsTrue()
         {

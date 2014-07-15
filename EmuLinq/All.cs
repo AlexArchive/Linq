@@ -7,18 +7,13 @@ namespace EmuLinq
     {
         public static bool All<TSource>(this IEnumerable<TSource> source, Func<TSource, bool> predicate)
         {
-            if (source == null)
-                throw new ArgumentNullException("source");
+            Ensure.IsNotNull(source, "source");
+            Ensure.IsNotNull(predicate, "predicate");
 
-            if (predicate == null)
-                throw new ArgumentNullException("predicate");
-
-            foreach (var element in source)
-            {
+            foreach (var element in source) {
                 if (!predicate(element))
                     return false;
             }
-
             return true;
         }
     }

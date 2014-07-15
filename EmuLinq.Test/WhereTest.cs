@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using EmuLinq.Test.Support;
 using NUnit.Framework;
 
 namespace EmuLinq.Test
@@ -7,6 +8,12 @@ namespace EmuLinq.Test
     [TestFixture]
     public class WhereTest
     {
+        [Test]
+        public void ExecutionIsDeferred()
+        {
+            new ThrowingEnumerable().Where(x => true);
+        }
+
         [Test]
         public void Filtering()
         {
@@ -48,7 +55,7 @@ namespace EmuLinq.Test
         {
             // arrange
             var source = new int[0];
-            
+
             // act
             var result = source.Where(x => x == 1);
 

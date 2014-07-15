@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using EmuLinq.Test.Support;
 using NUnit.Framework;
 
 namespace EmuLinq.Test
@@ -7,6 +8,12 @@ namespace EmuLinq.Test
     [TestFixture]
     public class ConcatTest
     {
+        [Test]
+        public void ExecutionIsDeferred()
+        {
+            new ThrowingEnumerable().Concat(new ThrowingEnumerable());
+        }
+
         [Test]
         public void ConactEnumerables()
         {

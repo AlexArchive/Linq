@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using EmuLinq.Test.Support;
 using NUnit.Framework;
 
 namespace EmuLinq.Test
@@ -7,6 +8,13 @@ namespace EmuLinq.Test
     [TestFixture]
     public class SelectTest
     {
+
+        [Test]
+        public void ExecutionIsDeferred()
+        {
+            new ThrowingEnumerable().Select(x => x);
+        }
+
         [Test]
         public void Projection()
         {
