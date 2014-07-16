@@ -65,6 +65,7 @@
     <Compile Include="SelectMany.cs" />
     <Compile Include="Single.cs" />
     <Compile Include="SingleOrDefault.cs" />
+    <Compile Include="Skip.cs" />
     <Compile Include="Take.cs" />
     <Compile Include="TakeWhile.cs" />
     <Compile Include="Union.cs" />

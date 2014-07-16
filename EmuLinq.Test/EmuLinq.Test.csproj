@@ -61,6 +61,7 @@
     <Compile Include="SelectTest.cs" />
     <Compile Include="SingleOrDefaultTest.cs" />
     <Compile Include="SingleTest.cs" />
+    <Compile Include="SkipTest.cs" />
     <Compile Include="Support\ThrowingEnumerable.cs" />
     <Compile Include="TakeTest.cs" />
     <Compile Include="UnionTest.cs" />
