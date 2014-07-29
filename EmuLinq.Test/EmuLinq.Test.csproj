@@ -63,9 +63,12 @@
     <Compile Include="SingleTest.cs" />
     <Compile Include="SkipTest.cs" />
     <Compile Include="SkipWhileTest.cs" />
+    <Compile Include="SumTest.cs" />
     <Compile Include="Support\ThrowingEnumerable.cs" />
     <Compile Include="TakeTest.cs" />
     <Compile Include="TakeWhileTest.cs" />
+    <Compile Include="ToArrayTest.cs" />
+    <Compile Include="ToListTest.cs" />
     <Compile Include="UnionTest.cs" />
     <Compile Include="WhereTest.cs" />
   </ItemGroup>

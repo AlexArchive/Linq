@@ -21,6 +21,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <CheckForOverflowUnderflow>false</CheckForOverflowUnderflow>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -67,8 +68,11 @@
     <Compile Include="SingleOrDefault.cs" />
     <Compile Include="Skip.cs" />
     <Compile Include="SkipWhile.cs" />
+    <Compile Include="Sum.cs" />
     <Compile Include="Take.cs" />
     <Compile Include="TakeWhile.cs" />
+    <Compile Include="ToArray.cs" />
+    <Compile Include="ToList.cs" />
     <Compile Include="Union.cs" />
     <Compile Include="Where.cs" />
   </ItemGroup>
