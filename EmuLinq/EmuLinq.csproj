@@ -72,6 +72,7 @@
     <Compile Include="Take.cs" />
     <Compile Include="TakeWhile.cs" />
     <Compile Include="ToArray.cs" />
+    <Compile Include="ToDictionary.cs" />
     <Compile Include="ToList.cs" />
     <Compile Include="Union.cs" />
     <Compile Include="Where.cs" />
